@@ -61,6 +61,10 @@ public class MaterialTextField extends FrameLayout {
     }
 
     public void reduce() {
+        
+        //Remove ability to collapse the views. Confuses the user as the text is hidden and only the label is visible.
+        
+        /*
         if (expanded) {
 
             final int heightInitial = getContext().getResources().getDimensionPixelOffset(R.dimen.mtf_cardHeight_final);
@@ -96,6 +100,7 @@ public class MaterialTextField extends FrameLayout {
 
             expanded = false;
         }
+        */
     }
 
     public void expand() {
@@ -131,6 +136,7 @@ public class MaterialTextField extends FrameLayout {
 
             expanded = true;
         }
+    
     }
 
     public View getCard() {
