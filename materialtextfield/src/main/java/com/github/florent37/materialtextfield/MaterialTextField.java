@@ -89,10 +89,6 @@ public class MaterialTextField extends FrameLayout {
                 })
                 .setDuration(ANIMATION_DURATION);
 
-            ViewCompat.animate(card)
-                .scaleY(reducedScale)
-                .setDuration(ANIMATION_DURATION);
-
             if (OPEN_KEYBOARD_ON_FOCUS) {
                 ((InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE)).toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
             }
