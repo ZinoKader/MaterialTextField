@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.os.Handler;
 
 /**
  * Created by florentchampigny on 27/08/15.
@@ -106,37 +107,44 @@ public class MaterialTextField extends FrameLayout {
     public void expand() {
         if (!expanded) {
 
-            ViewCompat.animate(editText)
-                .alpha(1f)
-                .setDuration(ANIMATION_DURATION);
-
-            ViewCompat.animate(card)
-                .scaleY(1f)
-                .setDuration(ANIMATION_DURATION);
-
-            ViewCompat.animate(label)
-                .alpha(0.4f)
-                .scaleX(0.7f)
-                .scaleY(0.7f)
-                .translationY(-labelTopMargin)
-                .setDuration(ANIMATION_DURATION);
-
-            ViewCompat.animate(image)
-                .alpha(1f)
-                .scaleX(1f)
-                .scaleY(1f)
-                .setDuration(ANIMATION_DURATION);
-
-            if (editText != null) {
-                editText.requestFocus();
-            }
             if (OPEN_KEYBOARD_ON_FOCUS) {
                 ((InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE)).showSoftInput(editText, InputMethodManager.SHOW_IMPLICIT);
             }
 
-            expanded = true;
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    ViewCompat.animate(editText)
+                            .alpha(1f)
+                            .setDuration(ANIMATION_DURATION);
+
+                    ViewCompat.animate(card)
+                            .scaleY(1f)
+                            .setDuration(ANIMATION_DURATION);
+
+                    ViewCompat.animate(label)
+                            .alpha(0.4f)
+                            .scaleX(0.7f)
+                            .scaleY(0.7f)
+                            .translationY(-labelTopMargin)
+                            .setDuration(ANIMATION_DURATION);
+
+                    ViewCompat.animate(image)
+                            .alpha(1f)
+                            .scaleX(1f)
+                            .scaleY(1f)
+                            .setDuration(ANIMATION_DURATION);
+
+                    if (editText != null) {
+                        editText.requestFocus();
+                    }
+
+                    expanded = true;
+                }
+            }, 600);
+            
         }
-    
+
     }
 
     public View getCard() {
